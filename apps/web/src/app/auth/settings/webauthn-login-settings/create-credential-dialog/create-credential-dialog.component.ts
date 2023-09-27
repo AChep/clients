@@ -38,7 +38,7 @@ export class CreateCredentialDialogComponent implements OnInit {
   protected invalidSecret = false;
   protected formGroup = this.formBuilder.group({
     userVerification: this.formBuilder.group({
-      secret: null as Verification | null,
+      secret: [null as Verification | null, Validators.required],
     }),
     credentialNaming: this.formBuilder.group({
       name: ["", Validators.maxLength(50)],
@@ -97,7 +97,11 @@ export class CreateCredentialDialogComponent implements OnInit {
         this.invalidSecret = true;
       } else {
         this.logService?.error(error);
-        this.platformUtilsService.showToast("error", null, this.i18nService.t("unexpectedError"));
+        this.platformUtilsService.showToast(
+          "error",
+          this.i18nService.t("unexpectedError"),
+          error.message
+        );
       }
       return;
     }
@@ -136,7 +140,11 @@ export class CreateCredentialDialogComponent implements OnInit {
       );
     } catch (error) {
       this.logService?.error(error);
-      this.platformUtilsService.showToast("error", null, this.i18nService.t("unexpectedError"));
+      this.platformUtilsService.showToast(
+        "error",
+        this.i18nService.t("unexpectedError"),
+        error.message
+      );
       return;
     }
 

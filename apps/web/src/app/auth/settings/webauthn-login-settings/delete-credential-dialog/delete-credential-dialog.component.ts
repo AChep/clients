@@ -59,8 +59,12 @@ export class DeleteCredentialDialogComponent implements OnInit, OnDestroy {
       if (error instanceof ErrorResponse && error.statusCode === 400) {
         this.invalidSecret = true;
       } else {
-        this.logService.error(error);
-        this.platformUtilsService.showToast("error", null, this.i18nService.t("unexpectedError"));
+        this.logService?.error(error);
+        this.platformUtilsService.showToast(
+          "error",
+          this.i18nService.t("unexpectedError"),
+          error.message
+        );
       }
       return false;
     } finally {
