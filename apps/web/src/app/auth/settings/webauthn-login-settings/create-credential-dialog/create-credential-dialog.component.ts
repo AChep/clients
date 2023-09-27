@@ -95,11 +95,6 @@ export class CreateCredentialDialogComponent implements OnInit {
     } catch (error) {
       if (error instanceof ErrorResponse && error.statusCode === 400) {
         this.invalidSecret = true;
-        // this.platformUtilsService.showToast(
-        //   "error",
-        //   this.i18nService.t("error"),
-        //   this.i18nService.t("invalidMasterPassword")
-        // );
       } else {
         this.logService?.error(error);
         this.platformUtilsService.showToast("error", null, this.i18nService.t("unexpectedError"));
