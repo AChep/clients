@@ -281,7 +281,7 @@
   </div>
   <div
     class="col-6"
-    *ngIf="organizationId && taxInfo.country !== 'US' && showAdditionalTaxOptions(taxInfo.country)"
+    *ngIf="organizationId && taxInfo.country !== 'US' && countrySupportsTax(taxInfo.country)"
   >
     <div class="form-group form-check">
       <input
@@ -297,7 +297,7 @@
 </div>
 <div
   class="row"
-  *ngIf="organizationId && taxInfo.includeTaxId && showAdditionalTaxOptions(taxInfo.country)"
+  *ngIf="organizationId && taxInfo.includeTaxId && countrySupportsTax(taxInfo.country)"
 >
   <div class="col-6">
     <div class="form-group">
@@ -308,7 +308,7 @@
 </div>
 <div
   class="row"
-  *ngIf="organizationId && taxInfo.includeTaxId && showAdditionalTaxOptions(taxInfo.country)"
+  *ngIf="organizationId && taxInfo.includeTaxId && countrySupportsTax(taxInfo.country)"
 >
   <div class="col-6">
     <div class="form-group">
